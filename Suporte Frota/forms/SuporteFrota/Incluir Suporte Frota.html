@@ -1,0 +1,1162 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/style-guide/css/fluig-style-guide.min.css" />
+    <link rel="stylesheet" href="Style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.ui/latest/jquery-ui.min.js"></script>
+    <script src="/resources/js/mustache/mustache-min.js"></script>
+    <script src="/style-guide/js/fluig-style-guide.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="Functions.js"></script>
+    <script src="Script.js"></script>
+    <script src="/webdesk/vcXMLRPC.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+</head>
+
+
+<body class="fluig-style-guide">
+    <form name="form" role="form" data-persistent="true">
+        <div id="divCollapse">
+            <ul id="coltabs" class="nav nav-tabs nav-justified nav-pills" role="tablist"
+                style="padding-bottom: 0px; width: 100%">
+                <li class="collapse-tab active" style="width: 100%"><a href="#tabInfoChamado" role="tab"
+                        id="atabInfoChamado" data-toggle="tab" aria-expanded="true" class="tab"
+                        style="display: flex; align-items: center; justify-content: center; height: 40px; font-size: 24px;">🛻</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tabInfoChamado">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-input">
+                                <label>Data da Solicitação:</label> <strong class="strongAlert">*</strong>
+                                <input type="text" id="dataOcorrencia" name="dataOcorrencia"
+                                    class="form-control inputInfoChamado date" />
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="centroCustoContainer">
+                            <div class="form-input">
+                                <label>Centro de Custo:</label> <strong class="strongAlert">*</strong>
+                                <div class="form-row">
+                                    <div class="col-md">
+                                        <select name="obra" id="obra" class="form-control inputInfoChamado">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-input">
+                                <label>Suporte:</label> <strong class="strongAlert">*</strong> <select name="suporte"
+                                    id="suporte" class="form-control inputInfoChamado">
+                                    <option value=""></option>
+                                    <option value="Aprovações Custo Obra">Aprovações Custo Obra</option>
+                                    <option value="Cartão Combustível">Cartão Combustível</option>
+                                    <option value="Locação de Veículo">Locação de Veículo</option>
+                                    <option value="Sinistro">Sinistro</option>
+                                    <option value="Tag de Pedágio">Tag de Pedágio</option>
+                                    <option value="Transferência de Veículo">Transferência de Veículo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6" id="demanda-container">
+                            <div class="form-input">
+                                <label>Demanda:</label> <strong class="strongAlert">*</strong> <select name="demanda"
+                                    id="demanda" class="form-control inputInfoChamado">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <br />
+
+
+                    <div id="divManutencoes">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaManutencoes" name="placaManutencoes"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Quilometragem do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" id="kmManutencoes" name="kmManutencoes"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                         <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Nome Condutor:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="nomeCondutorAp" name="nomeCondutorAp"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-input">
+                                    <label>Valor Orçamento Inicial:</label> <strong class="strongAlert">*</strong>
+                                    <input id="orcamentoInicial" name="orcamentoInicial"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-input">
+                                    <label>Valor Orçamento Final:</label><input id="orcamentoFinal"
+                                        name="orcamentoFinal" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6 divAnexo" id="divAnexoOrcamento">
+                                <label for="inputFileOrcamento">Orçamento do Veículo:</label>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileOrcamento" id="inputFileOrcamento"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileOrcamento" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileOrcamento', 'Anexos do Orçamento')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileOrcamento"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum
+                                        arquivo selecionado</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoFotos">
+                                <label for="inputFileFotos">Fotos do Veículo:</label>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileFotos" id="inputFileFotos"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileFotos" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileFotos', 'Fotos do Veículo')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileFotos"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum
+                                        arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Observação:</label> <strong class="strongAlert">*</strong>
+                                    <textarea name="observacaoManutencoes" id="observacaoManutencoes"
+                                        class="form-control inputResolucaoChamado inputInfoChamado" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divSinistro">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Download do arquivo "Aviso de Sinistro":</label>
+                                    <div style="display: flex; align-items: baseline">
+                                        <a id="downloadLink" style="display: none;"></a>
+                                        <button class="btn"
+                                            style="background-color: #E3B420; color: white; display: flex; align-items: center; gap: 5px;"
+                                            onclick="downloadFile()"><i class="flaticon flaticon-download icon-md"
+                                                aria-hidden="true"></i>
+                                            Baixar Arquivo</button>
+                                    </div>
+                                </div>
+                            </div>
+   			<div class="col-md-6 divAnexo" id="divAnexoAvisoSinistro">
+                                    <label for="inputFileAvisoSinistro">Aviso Sinistro:<strong
+                                    class="strongAlert">*</strong><small> (Favor inserir arquivo "Aviso de Sinistro" preenchido)</small></label>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileAvisoSinistro" id="inputFileAvisoSinistro"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileAvisoSinistro" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileAvisoSinistro', 'Aviso Sinistro')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileAvisoSinistro"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum
+                                        arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Localização de Ocorrência:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="localOcorrencia" name="localOcorrencia"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoFotosSinistro">
+                                <label for="inputFileFotosSinistro">Fotos de Acidente e
+                                    Veículos Envolvidos:</label> <strong class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileFotosSinistro" id="inputFileFotosSinistro"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileFotosSinistro" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileFotosSinistro', 'Fotos do Veículo')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileFotosSinistro"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Número do Boletim de Ocorrência:</label> <strong
+                                        class="strongAlert">*</strong> <input type="text" id="numeroBO" name="numeroBO"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoBO">
+                                <label for="inputFileBO">Anexos do Boletim de
+                                    Ocorrência:</label> <strong class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileBO" id="inputFileBO"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileBO" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileBO', 'Anexos do Boletim de Ocorrência')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileBO"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Cidade de Localização Atual do Veículo da Empresa:</label> <strong
+                                        class="strongAlert">*</strong> <input type="text" id="cidadeLocalizacao"
+                                        name="cidadeLocalizacao" class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                                  <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaSinistro" name="placaSinistro"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                                                <br />
+                             <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <div class="switch switch-success">
+                                        <label>Houve terceiro?</label> <input class="switch-input inputCheckbox"
+                                            type="checkbox" name="decisaoSim" id="decisaoSim"
+                                            onclick="atribuiValorCheckbox()" value="Sim"> <label
+                                            class="switch-button switchRedGreen" for="decisaoSim">Toggle</label>
+                                    </div>
+                                </div>
+                            </div>
+                 </div>
+                        <br />
+                        <div class="row" id="divContatoTerceiro">
+                            <div class="col-md-6" id="contatoTerceiro">
+                                <div class="form-input">
+                                    <label>Contato do Terceiro Envolvido:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="contatoTerceiroInput" name="contatoTerceiroInput"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoCNHTerceiro">
+                                <label for="inputFileCNHTerceiro">CNH do Terceiro:</label> <strong
+                                    class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileCNHTerceiro" id="inputFileCNHTerceiro"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileCNHTerceiro" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileCNHTerceiro', 'CNH do Terceiro')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileCNHTerceiro"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum
+                                        arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+<!--                         <br /> -->
+                    </div>
+                                        <div id="divInfosSpot">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input" id="divEnderecoRetirada">
+                                    <label>Endereço de Retirada:</label> <strong class="strongAlert">*</strong> <input
+                                        type="text" id="enderecoRetirada" name="enderecoRetirada"
+                                        class="form-control inputInfoChamado date" />
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="divEnderecoDevolucao">
+                                <div class="form-input">
+                                    <label>Endereço de Devolução:</label> <strong
+                                        class="strongAlert">*</strong><input
+                                        type="text" id="enderecoDevolucao" name="enderecoDevolucao"
+                                        class="form-control inputInfoChamado date" />                                  
+                                </div>
+                            </div>
+                            </div>
+                            <br>
+                            </div>
+                    <div id="divInfosLocacao">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input" id="divPrevisaoEntrega">
+                                    <label>Previsão de Retirada:</label> <strong class="strongAlert">*</strong> <input
+                                        type="text" id="previsaoEntrega" name="previsaoEntrega"
+                                        class="form-control inputInfoChamado date" />
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="divPrazoContrato">
+                                <div class="form-input">
+                                    <label for="prazoContratoLabel">Prazo de Contrato:</label> <strong
+                                        class="strongAlert">*</strong> <select name="prazoContrato" id="prazoContrato"
+                                        class="form-control inputInfoChamado">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="divPrazo" class="col-md-3">
+                                <div class="form-input">
+                                    <label for="prazoContratoLabel">Período em Dias:</label> <input type="text"
+                                        id="daterange" name="daterange" class="form-control inputInfoChamado date"
+                                        placeholder="Selecione o período">
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6" id="estimativaKm">
+                                <div class="form-input">
+                                    <label>Estimativa de Quilometragem Mensal:</label> <strong
+                                        class="strongAlert">*</strong> <input type="number" id="kmMensal"
+                                        name="kmMensal" class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Tipos de Modelo:</label> <strong class="strongAlert">*</strong>
+                                    <select name="modeloVeiculo" id="modeloVeiculo"
+                                        class="form-control inputInfoChamado">
+                                        <option value=""></option>
+                                        <option value="Leve">Leve (Ônix ou similar)</option>
+                                        <option value="Utilitário (Saveiro ou
+										similar)">Utilitário
+                                            (Saveiro ou similar)</option>
+                                        <option value="Utilitário (Montana ou
+										similar)">Utilitário
+                                            (Montana ou similar)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Setor de Atuação:</label> <strong class="strongAlert">*</strong>
+                                    <select name="setorAtuacao" id="setorAtuacao"
+                                        class="form-control inputInfoChamado">
+                                        <option value=""></option>
+                                        <option value="Administrador de Obra">Administração
+                                            Obra</option>
+                                        <option value="Engenheiro">Engenharia</option>
+                                        <option value="Laboratório">Laboratório</option>
+                                        <option value="Compartilhado">Segurança do Trabalho</option>
+                                        <option value="Compartilhado">Topografia</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo da Locação:</label> <strong class="strongAlert">*</strong>
+                                    <textarea name="motivoLocacao" id="motivoLocacao"
+                                        class="form-control inputResolucaoChamado inputInfoChamado" rows="2"
+                                        placeholder="Informe o Motivo da Locação"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div id="divSolicitacaoCartao">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="tipoCartao">Tipo de Cartão:</label>
+                                    <div class="inline-group">
+                                        <input type="radio" name="options" id="tipoPlaca" value="Placa">
+                                        <label for="tipoPlaca">Placa</label>
+                                        <input type="radio" name="options" id="tipoPcf" value="PCF">
+                                        <label for="tipoPcf">PCF</label>
+                                        <input type="radio" name="options" id="tipoCoringa" value="Coringa">
+                                        <label for="tipoCoringa">Coringa</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Limite do Cartão:</label> <strong class="strongAlert">*</strong>
+                                    <input id="limiteSolicitacao" name="limiteSolicitacao"
+                                        class="form-control inputInfoChamado" value=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="divAnexoCRLVSol">
+                            <div class="col-md-6 divAnexo">
+                                <label for="inputFileCRLVSol">CRLV:</label> <strong class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileCRLVSol" id="inputFileCRLVSol"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileCRLVSol" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileCRLVSol', 'CRLVSol')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileCRLVSol"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoDesbloqueio" name="motivoDesbloqueio"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divCancelamento">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaCancelamento" name="placaCancelamento"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoCancelamento" name="motivoCancelamento"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" id="messageReemissao">
+                            <div class="col-md-6">
+                                <div class="form-input speech-bubble" id="reissue-message">
+                                    <div class="speech-triangle"></div>
+                                    <label> A Reemissão do cartão custará R$5,62!</label>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+
+                    <div id="divDesbloqueioCartao">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaDesbloqueio" name="placaDesbloqueio"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Número do Cartão:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" id="numeroDesbloqueio" name="numeroDesbloqueio"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                          <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Termo de Responsabilidade do Usuário do Cartão:</label>
+                                    <div style="display: flex; align-items: baseline">
+                                        <a id="downloadLinkCartao" style="display: none;"></a>
+                                        <button class="btn"
+                                            style="background-color: #E3B420; color: white; display: flex; align-items: center; gap: 5px;"
+                                            onclick="downloadFileCartao()"><i class="flaticon flaticon-download icon-md"
+                                                aria-hidden="true"></i>
+                                            Baixar Arquivo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Data de Recebimento:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="dataDesbloqueio" name="dataDesbloqueio"
+                                        class="form-control inputInfoChamado date" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="divAlteraLimiteCartao">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaAltera" name="placaAltera"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Número do Cartão:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" id="numeroAltera" name="numeroAltera"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Limite Atual:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="limiteAtual" name="limiteAtual"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Limite Desejado:</label> <strong class="strongAlert">*</strong>
+                                    <input id="limiteDesejado" name="limiteDesejado"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                         <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoAltera" name="motivoAltera"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                            </div>
+                    </div>
+
+                    <div id="divTagSolicita">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Quantidade:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" id="quantidade" name="quantidade"
+                                        class="form-control inputInfoChamado" max="20"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoTagSolicita" name="motivoTagSolicita"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="divTagDesbloqueia">
+                        <div class="row">
+                            <div class="col-md-6" id="placaTag">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaTrans" name="placaTrans"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="numeroTag">
+                                <div class="form-input">
+                                    <label>Número da Tag:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" id="numeroTag" name="numeroTag"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row" id="tagCondutor">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Condutor Responsável:</label> <strong class="strongAlert">*</strong> <input
+                                        type="text" id="condutorTag" name="condutorTag"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoCRLV">
+                                <label for="inputFileCRLVTag">CRLV:</label> <strong class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileCRLVTag" id="inputFileCRLVTag"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFileCRLV" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileCRLV', 'CRLV')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFileCRLV"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum
+                                        arquivo selecionado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12" id="divTipoVeiculo">
+                                <div class="form-input">
+                                    <label>Tipo de Veículo:</label> <strong class="strongAlert">*</strong>
+                                       <select name="tipoVeiculo" id="tipoVeiculo"
+                                        class="form-control inputInfoChamado">
+                                        <option value=""></option>
+                                        <option value="Carro de Passeio">Carro de Passeio</option>
+                                        <option value="Caminhão">Caminhão</option>
+                                        <option value="Ônibus">Ônibus</option>
+                                    </select>
+                                </div>
+                            </div>
+                           <div class="col-md-3" id="divRodagem">
+                                <div class="form-input">
+                                    <label>Rodagem:</label> <strong class="strongAlert">*</strong>
+                                       <select name="rodagem" id="rodagem"
+                                        class="form-control inputInfoChamado">
+                                        <option value=""></option>
+                                        <option value="Simples">Simples</option>
+                                        <option value="Dupla">Dupla</option>
+                                    </select>
+                                </div>
+                            </div>
+                               <div class="col-md-3" id="divEixos">
+                                <div class="form-input">
+                                    <label>Eixos:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="eixos" name="eixos"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                          <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoTagDesbloqueia" name="motivoTagDesbloqueia"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="divTransfObra">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaTransOb" name="placaTransOb"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Obra de Destino:</label> <strong class="strongAlert">*</strong>
+                                    <div class="form-row">
+                                        <div class="col-md">
+                                            <select name="obraDestino" id="obraDestino"
+                                                class="form-control inputInfoChamado">
+                                                <option value=""></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">                        
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Data de Transferência:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="dataTransfObra" name="dataTransfObra"
+                                        class="form-control inputInfoChamado date" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 divAnexo" id="divAnexoFotosTrans">
+                                <label for="inputFileFotosTrans">Fotos do Veículo:</label> <strong
+                                    class="strongAlert">*</strong>
+                                <div style="display: flex; align-items: baseline">
+                                    <input type="file" name="inputFileFotosTrans" id="inputFileFotosTrans"
+                                        class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                    <button id="buttonFotosTrans" class="btn btn-primary classe-anexo"
+                                        onclick="uploadSelectedFile('inputFileFotosTrans', 'CRLV')">Escolher
+                                        arquivo</button>
+                                    <div class="fileSelectionStatus" id="textFotosTrans"
+                                        style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                        Nenhum arquivo selecionado</div>
+                                </div>
+                            </div>
+                            </div>
+                                  <br />
+ 					<div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoTransObra" name="motivoTransObra"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                          
+</div>
+                    </div>
+
+                    <div id="divTransfCond">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Data de Transferência:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="dataTransCond" name="dataTransCond"
+                                        class="form-control inputInfoChamado date" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input type="text" id="placaTransCond" name="placaTransCond"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoTransCond" name="motivoTransCond"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                      <div id="divRecarga">
+                        <div class="row">                           
+                            <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Placa do Veículo:</label> <strong class="strongAlert">*</strong>
+                                    <input id="placaRecarga" name="placaRecarga"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                              <div class="col-md-6">
+                                <div class="form-input">
+                                    <label>Valor:</label> <strong class="strongAlert">*</strong>
+                                    <input id="valorRecarga" name="valorRecarga"
+                                        class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoRecarga" name="motivoRecarga"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default" id=divCondutor>
+                <div class="panel-heading" style="background-color: #eaeaea;">
+                    <h4 class="panel-title" style="color: #58595B">Informações do Condutor</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-input">
+                                <label>Nome:</label> <input type="text" id="nomeCondutor" name="nomeCondutor"
+                                    class="form-control inputInfoChamado" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-input">
+                                <label>Telefone:</label> <input type="text" id="telefoneCondutor"
+                                    name="telefoneCondutor" class="form-control inputInfoChamado" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-input">
+                                <label>CPF:</label> <input type="text" id="cpfCondutor" name="cpfCondutor"
+                                    class="form-control inputInfoChamado" />
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-input">
+                                <label>E-mail:</label><input type="text" id="emailCondutor" name="emailCondutor"
+                                    class="form-control inputInfoChamado" />
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-input">
+                                <label>Regime:</label> <input type="text" id="regimeCondutor" name="regimeCondutor"
+                                    class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 divAnexo" id="divAnexoCNHCondutor">
+                            <label for="inputFileCNHCondutor">CNH do Condutor:</label>
+                            <div style="display: flex; align-items: baseline">
+                                <input type="file" name="inputFileCNHCondutor" id="inputFileCNHCondutor"
+                                    class="form-control inputFile classe-anexo" style="display: none" multiple />
+                                <button id="buttonFileCNHCondutor" class="btn btn-primary classe-anexo"
+                                    onclick="uploadSelectedFile('inputFileCNHCondutor', 'CNH do Condutor')">Escolher
+                                    arquivo</button>
+                                <div class="fileSelectionStatus" id="textFileCNHCondutor"
+                                    style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; margin-left: 5px">
+                                    Nenhum arquivo</div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" id="divMotivoCondutor">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                    <label>Motivo:</label> <strong class="strongAlert">*</strong>
+                                    <textarea id="motivoCondutor" name="motivoCondutor"
+                                        class="form-control inputInfoChamado date"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                </div>                       
+            </div>
+            <br/>
+            <div class="panel panel-default" id="divCodigoMotorista">
+                <div class="panel-heading" style="background-color: #eaeaea;">
+                    <h4 class="panel-title" style="color: #58595B">Código Gerado</h4>
+                </div>
+                <div class="panel-body">                  
+                     <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input">
+                                   <label for="codigoMotorista">Código de Motorista:</label>
+                    	        <input type="text" id="codigoMotorista" name="codigoMotorista"
+                                class="form-control inputInfoChamado" />
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                          <div class="row" id ="divAlertaTexto">
+                          <div class="col-md-12">
+                          <p style="color: red"><b>ALERTA IMPORTANTE:</b></p>
+                          <p style="text-indent: 40px;">O condutor <b>receberá um link para a realização obrigatória do curso de direção defensiva</b> e para a <b>assinatura da Política de Frota</b>, que será encaminhado para o e-mail e telefone cadastrados.</p>
+                          <p style="text-indent: 40px;">Lembramos também que, para a liberação de pagamento com o cartão Alelo Combustível, será de uso obrigatório o código do motorista. Este código é <b>individual e pessoal</b> e <b>não deve ser compartilhado.</b></p>
+                          <p style="text-indent: 40px;"><b>Atenção:</b> O uso indevido deste código poderá resultar em <b>advertências ou penalidades</b> para o condutor. Portanto, <b>é de extrema importância não compartilhar o código.</b></p>
+                          <p style="text-align: center;">Agradecemos pela colaboração!</p>
+                          </div>
+                          </div>
+                </div>                      
+            </div>
+
+        <!-- //////////////////////////////////////////          FROTA           ///////////////////////////////////////////////////////////// -->
+
+        <ul id="surprimentos" class="nav nav-tabs nav-justified nav-pills" role="tablist"
+            style="padding-bottom: 0px; width: 100%; margin-top: 30px; font-size: 14px">
+            <li class="collapse-tab active" style="width: 100%"><a href="#tabInfoChamado" role="tab"
+                    id="atabInfoChamadoMatriz" data-toggle="tab" aria-expanded="true" class="tab"
+                    style="font-size: 14px">Frota</a></li>
+        </ul>
+        <div class="tab-content" id="divMatriz">
+            <div class="tab-pane active" id="tabInfoChamadoMatriz">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-input">
+                            <label for="placa">Placa:</label> <strong class="strongAlert">*</strong>
+                            <input type="text" id="placa" name="placa" maxLength="8"
+                                class="form-control inputInfoChamado" />
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-input">
+                            <label for="marca">Marca:</label> <strong class="strongAlert">*</strong>
+                            <input type="text" id="marca" name="marca" class="form-control inputInfoChamado" />
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-input">
+                            <label for="modelo">Modelo:</label> <strong class="strongAlert">*</strong>
+                            <input type="text" id="modelo" name="modelo" class="form-control inputInfoChamado" />
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-input">
+                            <label for="ano">Ano:</label><strong class="strongAlert">*</strong>
+                            <input type="text" id="ano" name="ano" maxLength="4"
+                                class="form-control inputInfoChamado" />
+                        </div>
+                        <br />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-input">
+                            <label>Locadora:</label> <strong class="strongAlert">*</strong>
+                            <select name="locadora" id="locadora" class="form-control inputInfoChamado">
+                                <option value=""></option>
+                                <option value="CCV">CCV</option>
+                                <option value="Central de Equipamentos">Central de Equipamentos</option>
+                                <option value="LOCALIZA">LOCALIZA</option>
+                                <option value="MONTEIRO">MONTEIRO</option>
+                                <option value="UNIDAS">UNIDAS</option>
+                            </select> <br />
+                        </div>
+                        <div class="form-input">
+                            <div class="form-row">
+                                <div class="col-md">
+                                    <label id="valorMensalLabel">Valor Mensal:</label> <strong
+                                        class="strongAlert">*</strong> <span> <input type="number" step="0.01"
+                                            id="valorMensalNumero" name="valorMensalNumero"
+                                            class="form-control inputInfoChamado classe-anexo" />
+                                    </span>
+                                </div>
+                                <div class="col-md">
+                                    <label>Diária:</label> <strong class="strongAlert">*</strong>
+                                    <input type="number" step="0.01" id="totalMensal" name="totalMensal"
+                                        class="form-control inputInfoChamado classe-anexo" />
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-input">
+                            <label>Transporte:</label> <strong class="strongAlert">*</strong>
+                            <select name="transporte" id="transporte" class="form-control inputInfoChamado">
+                                <option value=""></option>
+                                <option value="CM Bezerra">CM Bezerra</option>
+                                <option value="M1 Transportes">M1 Transportes</option>
+                                <option value="Retira">Retira</option>
+                            </select> <br />
+
+                        </div>
+                        <div class="form-input">
+                            <div class="form-row">
+                                <div class="col-md">
+                                    <label>Previsão de Entrega:</label> <strong class="strongAlert">*</strong>
+                                    <span> <input type="text" id="previsaoEntregaMatriz"
+                                            name="previsaoEntregaMatriz" class="form-control inputInfoChamado date" />
+                                    </span>
+                                </div>
+                                <div class="col-md">
+                                    <label>Vigência do Contrato:</label> <strong class="strongAlert">*</strong>
+                                    <span> <input type="text" id="vigenciaContratoMatriz"
+                                            name="vigenciaContratoMatriz"
+                                            class="form-control inputInfoChamado date" />
+                                    </span>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 divAnexo" id="divAnexoDocumentoVeiculo">
+                        <div class="form-input">
+                            <label for="inputFileDocumentoVeiculo">Documento do
+                                Veículo:</label> <strong class="strongAlert">*</strong>
+                            <div class="input-group" style="display: flex; align-items: baseline">
+                                <input type="file" name="inputFileDocumentoVeiculo" id="inputFileDocumentoVeiculo"
+                                    class="form-control classe-anexo" style="display: none" multiple />
+                                <button class="btn btn-primary classe-anexo"
+                                    onclick="uploadSelectedFile('inputFileDocumentoVeiculo', 'Documento do Veículo')"
+                                    style="margin-right: 5px">Escolher arquivo</button>
+                                <div class="fileSelectionStatus" id="textFileDocumentoVeiculo"
+                                    style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">Nenhum
+                                    arquivo selecionado</div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-6 divAnexo" id="divAnexoTermoAutorizacao">
+                        <label for="inputFileTermoAutorizacao">Termo de
+                            Autorização de Uso de Veículo:</label> <strong class="strongAlert">*</strong>
+                        <div class="input-group" style="display: flex; align-items: baseline">
+                            <input type="file" name="inputFileTermoAutorizacao" id="inputFileTermoAutorizacao"
+                                class="form-control classe-anexo" style="display: none" multiple />
+                            <button class="btn btn-primary classe-anexo"
+                                onclick="uploadSelectedFile('inputFileTermoAutorizacao', 'Termo de Autorização de Uso de Veículo')"
+                                style="margin-right: 5px">Escolher arquivo</button>
+                            <div class="fileSelectionStatus" id="textFileTermoAutorizacao"
+                                style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">Nenhum
+                                arquivo selecionado</div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-input">
+                            <label>Rastreador:</label> <strong class="strongAlert">*</strong>
+                            <div class="input-group">
+                                <label class="radio-inline"> <input type="radio" name="rastreador" value="Sim"
+                                        id="rastreador_sim" /> Sim
+                                </label> <label class="radio-inline"> <input type="radio" name="rastreador" value="Não"
+                                        id="rastreador_nao" checked />
+                                    Não
+                                </label>
+                            </div>
+                            <br />
+                            <div class="input-group" style="display: flex; align-items: baseline">
+                                <input type="file" name="inputFileRastreador" id="inputFileRastreador"
+                                    class="form-control classe-anexo" style="display: none" multiple />
+                                <button class="btn btn-primary classe-anexo"
+                                    onclick="uploadSelectedFile('inputFileRastreador', 'Rastreador')"
+                                    style="margin-right: 5px">Escolher arquivo</button>
+                                <div class="fileSelectionStatus" id="textFileRastreador"
+                                    style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden">Nenhum
+                                    arquivo selecionado</div>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-input">
+                            <label>Cartão Combustível:</label> <strong class="strongAlert">*</strong>
+                            <div class="input-group">
+                                <label class="radio-inline"> <input type="radio" name="cartaoCombustivel" value="Sim"
+                                        id="cartao_combustivel_sim" /> Sim
+                                </label> <label class="radio-inline"> <input type="radio" name="cartaoCombustivel"
+                                        value="Não" id="cartao_combustivel_nao" checked /> Não
+                                </label>
+                            </div>
+                            <br /> <label for="cartao_combustivel_input" id="cartao_combustivel_label"
+                                style="display: none">Código
+                                de Motorista Para Cartão Combustível:</label> <input type="text"
+                                id="cartao_combustivel_input" name="cartao_combustivel_input"
+                                class="form-control inputInfoChamado" style="display: none" maxLength="5" />
+                        </div>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <!-- ////////////////////////////////////////               RESOLUÇÃO            ////////////////////////////////////////////////////////////////////// -->
+
+            <div id="divResolucaoChamado" style="text-align: center; margin-top: 20px">
+                <div id="divDecisaoAprovar" style="display: inline-block">
+                    <label for="decisaoAprovar" style="margin-right: 2%; padding-top: 2px">Aprovar</label>
+                    <div class="switch switch-success">
+                        <input class="switch-input" type="radio" name="decisao" id="decisaoAprovar" value="Aprovar" />
+                        <label class="switch-button switchRedGreen" for="decisaoAprovar">Toggle</label>
+                    </div>
+                </div>
+                <div id="divDecisaoCancelar" style="display: inline-block">
+                    <label for="decisaoCancelar" style="margin-right: 2%; padding-top: 2px">Retornar</label>
+                    <div class="switch switch-danger">
+                        <input class="switch-input inputCheckbox" type="radio" name="decisao" id="decisaoCancelar"
+                            value="Cancelar" /> <label class="switch-button switchRedGreen"
+                            for="decisaoCancelar">Toggle</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="hidden" style="display: none">
+            <input type="hidden" id="solicitante" name="solicitante" />
+            <input type="hidden" id="atividade" name="atividade" />
+            <input type="hidden" id="formMode" name="formMode" />
+            <input type="hidden" id="formDataStorage" name="formDataStorage" />
+            <input type="hidden" id="lastActivity" name="lastActivity" value="${WKNumState}" />
+            <input type="hidden" id="modelo_veiculo_selecionado" name="modelo_veiculo_selecionado" />
+            <input type="hidden" id="jsonEmailSolicitante" name="jsonEmailSolicitante" />
+            <input type="hidden" id="hiddenFileName" name="hiddenFileName" value="">
+            <input type="hidden" id="data_ocorrencia_hidden" name="data_ocorrencia_hidden" />
+            <input type="hidden" name="hiddenCodColigada" id="hiddenCodColigada" />
+            <input type="hidden" name="hiddenObra" id="hiddenObra" />
+            <input type="hidden" name="obraView" id="obraView" />
+            <input type="hidden" name="hiddenCODGCCUSTO" id="hiddenCODGCCUSTO" />
+            <input type="hidden" name="coordenador" id="coordenador" />
+            <input type="hidden" name="engenheiro" id="engenheiro" />
+            <input type="hidden" name="administrador" id="administrador" />
+            <input type="hidden" id="demandaSalva" name="demandaSalva" value=""/>
+            <input type="hidden" id="previsao_entrega_oculta" name="previsao_entrega_oculta" />
+            <input type="hidden" id="suporte_hidden" name="suporte_hidden" />
+            <input type="hidden" id="obraDestinoHidden" name="obraDestinoHidden" />
+            <input type="hidden" id="coligadaDestino" name="coligadaDestino" />
+            <input type="hidden" id="houveTerceiro" name="houveTerceiro">
+            <input type="hidden" id="obraDestinoInteira" name="obraDestinoInteira">
+      	     <input type="hidden" id="valorRecargaNumber" name="valorRecargaNumber">
+            <input type="hidden" id="orcamentoInicialNumber" name="orcamentoInicialNumber">
+            <input type="hidden" id="orcamentoFinalNumber" name="orcamentoFinalNumber">
+            <input type="hidden" id="limiteSolicitacaoNumber" name="limiteSolicitacaoNumber">
+            <input type="hidden" id="limiteDesejadoNumber" name="limiteDesejadoNumber">
+        </div>
+
+        <script>
+            var beforeSendValidate = function (numState,
+                nextState) {
+                return ValidaCampos();
+            };
+            $(document)
+                .ready(
+                    function () {
+                        $(
+                            '#telefoneCondutor')
+                            .mask(
+                                '(00) 00000-0000');
+                        $(
+                            '#cpfCondutor')
+                            .mask(
+                                '000.000.000-00');
+                    });
+
+        </script>
+
+        </div>
+    </form>
+</body>
+
+</html>

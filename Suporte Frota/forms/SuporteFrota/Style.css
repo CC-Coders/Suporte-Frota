@@ -1,0 +1,206 @@
+.visible {
+    display: block !important;
+}
+.has-error {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+	padding-left: 2px !important;
+	padding-right: 2px !important;
+	display: inline-block;
+	border: 1px red solid !important;
+	color: black !important;
+}
+
+.strongAlert {
+	color: red;
+}
+
+.form-input-checkbox {
+	margin-right: 15px;
+	display: inline-block;
+}
+
+#divDecisao, #divDecisaoConclusao, #divDecisao2 {
+	text-align: center;
+}
+
+.tab {
+	border: black 1px solid !important;
+	border-radius: 4px 4px 0 0 !important;
+}
+
+
+
+.fluig-style-guide .nav-tabs.nav-justified>li.in>a {
+	background-color: #58595b;
+	color: #fff;
+}
+
+.tab-content {
+	border: black solid 1px;
+	width: fit-content;
+	min-width: 100%;
+}
+
+textarea {
+	resize: vertical;
+}
+
+
+.disabled-field {
+    pointer-events: none;
+    background-color: #f8f9fa; 
+}
+
+
+.componentAnexo{
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.componentAnexo .input-group{
+	flex-grow: 1;
+	position: relative;
+}
+
+.componentAnexo .inputAnexo{
+	color: blue!important;
+	border-radius: 0!important;
+}
+
+.componentAnexo .icones{
+	display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.componentAnexo .icones .btn{
+	outline: none!important;
+    outline-offset: unset!important;
+    border-radius: 0;
+	padding-left: 7px;
+    padding-right: 7px;
+	margin-left: 3px;
+}
+
+.componentAnexo .icones .btn-default,
+.componentAnexo .icones .btn-default:focus, 
+.componentAnexo .icones .btn-default:active,
+.componentAnexo .icones .btn-default:hover{
+	border: solid 1px #58595b!important;
+}
+
+.componentAnexo .icones .btn-primary,
+.componentAnexo .icones .btn-primary:focus, 
+.componentAnexo .icones .btn-primary:active,
+.componentAnexo .icones .btn-primary:hover{
+	border: solid 1px #58595b!important;
+}
+
+.componentAnexo .icones .btn-success,
+.componentAnexo .icones .btn-success:focus, 
+.componentAnexo .icones .btn-success:active,
+.componentAnexo .icones .btn-success:hover{
+	border: solid 1px #1ab83f!important;
+}
+
+.componentAnexo .icones .btn-info,
+.componentAnexo .icones .btn-info:focus, 
+.componentAnexo .icones .btn-info:active,
+.componentAnexo .icones .btn-info:hover{
+	border: solid 1px #1eaad9!important;
+}
+.componentAnexo .icones .btn-warning,
+.componentAnexo .icones .btn-warning:focus, 
+.componentAnexo .icones .btn-warning:active,
+.componentAnexo .icones .btn-warning:hover{
+	border: solid 1px #e3b420!important;
+}
+
+.componentAnexo .icones .btn-danger,
+.componentAnexo .icones .btn-danger:focus, 
+.componentAnexo .icones .btn-danger:active,
+.componentAnexo .icones .btn-danger:hover{
+	border: solid 1px #cc3d3d!important;
+}
+
+#placa{
+	text-transform: uppercase
+}
+
+
+#divDecisao {
+     text-align: center;
+}
+
+.switch-md {
+      max-width: 200px;
+      margin: 0 auto;
+}
+
+.switch-md label {
+      display: block;
+      margin-bottom: 5px;
+}
+
+.switch-md div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+}
+
+.switch-md input:checked+.switch-button {
+      background-color: #28a745;
+}
+
+.divDecisaoTransferencia{
+	display: flex;
+	flex-direction: column;
+}
+
+.hidden {
+    display: none;
+}
+
+#divCondutor {
+    margin-top: 20px; 
+    padding: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    background-color: #f9f9f9; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05); 
+}
+.speech-bubble {
+	border: 2px solid #E3B420;
+    border-radius: 10px;
+    width: 70%;
+    padding: 15px;
+    position: relative;
+    margin-top: 15px;
+    height: 50px;
+}
+
+.speech-triangle{
+position: absolute;
+    top: -19px;
+    left: 20px;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-bottom: 20px solid #E3B420;
+}
+.speech-triangle::before{
+	   content: "";
+        position: absolute;
+        top: 3px; /* Ajuste para centralizar */
+        left: -17px; /* Alinha com a borda esquerda do triângulo */
+        width: 0;
+        height: 0;
+        border-left: 17px solid transparent;
+        border-right: 17px solid transparent;
+        border-bottom: 17px solid white; 
+}
