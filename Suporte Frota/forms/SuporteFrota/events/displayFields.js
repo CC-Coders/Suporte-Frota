@@ -11,7 +11,7 @@ function displayFields(form, customHTML) {
         log.info("DisplayFields - WKNumState: " + getValue('WKNumState'));
         log.info("DisplayFields - UserCode: " + getValue("WKUser"));
 
-        if (getValue('WKNumState') == 5) {
+        if (getValue('WKNumState') == 10) {
             form.setValue("atendimento", getValue("WKUser"));
         }
 
